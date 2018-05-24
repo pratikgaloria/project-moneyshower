@@ -1,7 +1,7 @@
 {
-  "name": "app",
-  "version": "1.0.0",
-  "description": "",
+  "name": "project-moneyshower",
+  "version": "0.0.1",
+  "description": "A bot that trades",
   "scripts": {
     "start": "webpack-dev-server --hot",
     "server": "babel-watch server",
@@ -10,13 +10,13 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "postinstall": "npm run build",
-    "eslint": "eslint .",
+    "lint": "eslint .",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.production.js --progress --profile --colors",
     "surge": "rm -rf dist && npm run build && cp dist/index.html dist/200.html && surge dist"
   },
   "engines": {
-    "node": "6.6.0",
-    "npm": "3.10.3"
+    "node": "6.9.1",
+    "npm": "5.6.0"
   },
   "jest": {
     "moduleDirectories": [
@@ -37,8 +37,8 @@
     "babel-watch": "^2.0.7",
     "cross-env": "^5.0.5",
     "enzyme-adapter-react-16": "^1.0.0",
-    "eslint": "^4.8.0",
-    "eslint-config-airbnb": "^15.1.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
@@ -73,10 +73,10 @@
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "null-loader": "^0.1.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.1.1",
     "redux": "^3.7.2",
     "style-loader": "^0.18.2",
     "webpack": "3.6.0"
