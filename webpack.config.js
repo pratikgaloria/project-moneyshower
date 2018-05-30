@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({ template: 'index.html' });
 const definePlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development' || 'true'))
+  __DEV__: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development' || 'true')),
 });
 
 const stylesheetsLoaders = [
@@ -14,13 +14,13 @@ const stylesheetsLoaders = [
     options: {
       modules: true,
       localIdentName: '[path]-[local]-[hash:base64:3]',
-      sourceMap: true
-    }
-  }
+      sourceMap: true,
+    },
+  },
 ];
 
 module.exports = {
-  context: path.join(__dirname, 'src'),
+  context: path.join(__dirname, 'public'),
   entry: './index',
   output: {
     filename: '[hash].js',
@@ -28,52 +28,53 @@ module.exports = {
   devtool: 'source-map',
   plugins: [htmlWebpackPlugin, definePlugin],
   resolve: {
-    modules: ['node_modules', path.join(__dirname, 'src')]
+    extensions: ['.js', '.jsx', '.json'],
+    modules: ['node_modules', path.join(__dirname, 'src')],
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       }, {
         test: /\.html$/,
-        loader: 'html-loader'
+        loader: 'html-loader',
       }, {
         test: /\.css$/,
-        use: stylesheetsLoaders
+        use: stylesheetsLoaders,
       }, {
         test: /\.scss$/,
         use: [...stylesheetsLoaders, {
           loader: 'sass-loader',
           options: {
-            sourceMap: true
-          }
-        }]
+            sourceMap: true,
+          },
+        }],
       }, {
         test: /\.sass$/,
         use: [...stylesheetsLoaders, {
           loader: 'sass-loader',
           options: {
             indentedSyntax: 'sass',
-            sourceMap: true
-          }
-        }]
+            sourceMap: true,
+          },
+        }],
       }, {
         test: /\.less$/,
         use: [...stylesheetsLoaders, {
           loader: 'less-loader',
           options: {
-            sourceMap: true
-          }
-        }]
-      }
-    ]
+            sourceMap: true,
+          },
+        }],
+      },
+    ],
   },
   devServer: {
     historyApiFallback: true,
     proxy: {
-      '/api*': 'http://localhost:8181'
-    }
-  }
+      '/api*': 'http://localhost:8181',
+    },
+  },
 };

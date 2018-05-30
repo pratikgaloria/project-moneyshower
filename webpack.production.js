@@ -9,9 +9,9 @@ const stylesheetsLoaders = [{
   options: {
     modules: true,
     localIdentName: '[path]-[local]-[hash:base64:3]',
-    sourceMap: true
-  }
-}
+    sourceMap: true,
+  },
+},
 ];
 
 const stylesheetsPlugin = new ExtractTextPlugin('[hash].css');
@@ -19,19 +19,19 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({ template: 'index.html' });
 const definePlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development' || 'false')),
   'process.env': {
-    NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
-  }
+    NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'),
+  },
 });
 const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } });
 const compressionPlugin = new CompressionPlugin();
 
 module.exports = {
-  context: path.join(__dirname, 'src'),
+  context: path.join(__dirname, 'public'),
   entry: './index',
   output: {
     publicPath: '/',
     filename: '[hash].js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
   },
   devtool: 'cheap-source-map',
   plugins: [
@@ -39,34 +39,34 @@ module.exports = {
     htmlWebpackPlugin,
     definePlugin,
     uglifyPlugin,
-    compressionPlugin
+    compressionPlugin,
   ],
   resolve: {
-    modules: ['node_modules', path.join(__dirname, 'src')]
+    modules: ['node_modules', path.join(__dirname, 'src')],
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       }, {
         test: /\.html$/,
-        loader: 'html-loader'
+        loader: 'html-loader',
       }, {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: stylesheetsLoaders
-        })
+          use: stylesheetsLoaders,
+        }),
       }, {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [...stylesheetsLoaders, {
-            loader: 'sass-loader'
-          }]
-        })
+            loader: 'sass-loader',
+          }],
+        }),
       }, {
         test: /\.sass$/,
         use: ExtractTextPlugin.extract({
@@ -75,18 +75,18 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               indentedSyntax: 'sass',
-            }
-          }]
-        })
+            },
+          }],
+        }),
       }, {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [...stylesheetsLoaders, {
-            loader: 'less-loader'
-          }]
-        })
-      }
-    ]
-  }
+            loader: 'less-loader',
+          }],
+        }),
+      },
+    ],
+  },
 };

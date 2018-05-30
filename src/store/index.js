@@ -17,7 +17,7 @@ const store = compose(
   // applyMiddleware(thunk), // any Redux middleware, e.g. redux-thunk
   applyMiddleware(routerMiddleware(history)),
   // Provides support for DevTools via Chrome extension
-  window.devToolsExtension ? window.devToolsExtension() : f => f
+  window.devToolsExtension ? window.devToolsExtension() : f => f,
 )(createStore)(connectRouter(history)(reducer));
 
 export default store;
