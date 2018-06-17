@@ -6,15 +6,13 @@ import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
 import Icon from '@material-ui/core/Icon';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+
+import Logo from './logo';
+import Menu from './menu';
+import Topbar from './topbar';
 
 class Layout extends React.Component {
   state = {
@@ -27,85 +25,6 @@ class Layout extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-
-    const drawer = (
-      <div className={classes.menu}>
-        <div className={classes.flex}>
-          <Divider />
-          <List>
-            <ListItem button>
-              <ListItemIcon className={classes.colorWhite}>
-                <Icon>dashboard</Icon>
-              </ListItemIcon>
-              <ListItemText
-                disableTypography
-                primary={<Typography variant="subheading" style={{ color: '#FFFFFF' }}>Dashboard</Typography>}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon className={classes.colorWhite}>
-                <Icon>swap_vertical_circle</Icon>
-              </ListItemIcon>
-              <ListItemText
-                disableTypography
-                primary={<Typography variant="subheading" style={{ color: '#FFFFFF' }}>Positions</Typography>}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon className={classes.colorWhite}>
-                <Icon>settings_input_component</Icon>
-              </ListItemIcon>
-              <ListItemText
-                disableTypography
-                primary={<Typography variant="subheading" style={{ color: '#FFFFFF' }}>Bots</Typography>}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon className={classes.colorWhite}>
-                <Icon>book</Icon>
-              </ListItemIcon>
-              <ListItemText
-                disableTypography
-                primary={<Typography variant="subheading" style={{ color: '#FFFFFF' }}>Orderbook</Typography>}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon className={classes.colorWhite}>
-                <Icon>assessment</Icon>
-              </ListItemIcon>
-              <ListItemText
-                disableTypography
-                primary={<Typography variant="subheading" style={{ color: '#FFFFFF' }}>Reports</Typography>}
-              />
-            </ListItem>
-          </List>
-          <Divider />
-        </div>
-        <div>
-          <Divider />
-          <List>
-            <ListItem button>
-              <ListItemIcon className={classes.colorWhite}>
-                <Icon>account_box</Icon>
-              </ListItemIcon>
-              <ListItemText
-                disableTypography
-                primary={<Typography variant="subheading" style={{ color: '#FFFFFF' }}>Account</Typography>}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon className={classes.colorWhite}>
-                <Icon>help</Icon>
-              </ListItemIcon>
-              <ListItemText
-                disableTypography
-                primary={<Typography variant="subheading" style={{ color: '#FFFFFF' }}>Help</Typography>}
-              />
-            </ListItem>
-          </List>
-        </div>
-      </div>
-    );
 
     return (
       <div>
@@ -129,12 +48,7 @@ class Layout extends React.Component {
             <Typography variant="title" color="primary" noWrap className={classes.flex}>
               Dashboard
             </Typography>
-            <IconButton color="primary">
-              <Icon>notifications</Icon>
-            </IconButton>
-            <IconButton color="primary">
-              <Icon>account_circle</Icon>
-            </IconButton>
+            <Topbar />
           </Toolbar>
         </AppBar>
         <Hidden mdUp>
@@ -150,11 +64,8 @@ class Layout extends React.Component {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <Typography variant="headline" className={classes.logo}>
-              <Icon className={classes.logoIcon}>trending_up</Icon>
-              <span style={{ textTransform: 'uppercase', fontWeight: 700 }}>Showr</span>
-            </Typography>
-            {drawer}
+            <Logo />
+            <Menu />
           </Drawer>
         </Hidden>
         <Hidden smDown implementation="css">
@@ -165,11 +76,8 @@ class Layout extends React.Component {
               paper: classes.drawerPaper,
             }}
           >
-            <Typography variant="headline" className={classes.logo}>
-              <Icon className={classes.logoIcon}>trending_up</Icon>
-              <span style={{ textTransform: 'uppercase', fontWeight: 700 }}>Showr</span>
-            </Typography>
-            {drawer}
+            <Logo />
+            <Menu />
           </Drawer>
         </Hidden>
       </div>

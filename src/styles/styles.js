@@ -35,11 +35,6 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
   },
   toolbar: theme.mixins.toolbar,
-  menu: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-  },
   drawerPaper: {
     background: 'linear-gradient(135deg, #BD9B3E, #D6C15B)',
     width: drawerWidth,
@@ -53,6 +48,10 @@ const styles = theme => ({
   },
   logoIcon: {
     fontSize: '32px',
+    fontWeight: 700,
+  },
+  logoText: {
+    textTransform: 'uppercase',
     fontWeight: 700,
   },
   colorWhite: {

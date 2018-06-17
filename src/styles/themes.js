@@ -46,6 +46,11 @@ const theme = createMuiTheme({
     danger: colorError,
   },
   overrides: {
+    MuiBackdrop: {
+      root: {
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      },
+    },
     MuiTypography: {
       title: {
         textTransform: 'uppercase',
