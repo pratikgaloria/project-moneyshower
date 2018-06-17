@@ -129,11 +129,12 @@ class Layout extends React.Component {
             <Typography variant="title" color="primary" noWrap className={classes.flex}>
               Dashboard
             </Typography>
-            <Button color="primary">Sign in</Button>
-            <Button variant="raised" color="secondary" className={classes.marginLeft}>
-              Get started
-              <Icon>chevron_right</Icon>
-            </Button>
+            <IconButton color="primary">
+              <Icon>notifications</Icon>
+            </IconButton>
+            <IconButton color="primary">
+              <Icon>account_circle</Icon>
+            </IconButton>
           </Toolbar>
         </AppBar>
         <Hidden mdUp>
@@ -149,6 +150,10 @@ class Layout extends React.Component {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
+            <Typography variant="headline" className={classes.logo}>
+              <Icon className={classes.logoIcon}>trending_up</Icon>
+              <span style={{ textTransform: 'uppercase', fontWeight: 700 }}>Showr</span>
+            </Typography>
             {drawer}
           </Drawer>
         </Hidden>
