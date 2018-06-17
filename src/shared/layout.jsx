@@ -162,7 +162,7 @@ class Layout extends React.Component {
           >
             <Typography variant="headline" className={classes.logo}>
               <Icon className={classes.logoIcon}>trending_up</Icon>
-              <span style={{ textTransform: 'uppercase', fontWeight: 700 }}>Blazd</span>
+              <span style={{ textTransform: 'uppercase', fontWeight: 700 }}>Showr</span>
             </Typography>
             {drawer}
           </Drawer>

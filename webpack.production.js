@@ -42,6 +42,7 @@ module.exports = {
     compressionPlugin,
   ],
   resolve: {
+    extensions: ['.js', '.jsx', '.json'],
     modules: ['node_modules', path.join(__dirname, 'src')],
   },
   module: {
