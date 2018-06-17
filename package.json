@@ -9,7 +9,6 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "postinstall": "npm run build",
     "lint": "eslint .",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.production.js --progress --profile --colors",
     "surge": "rm -rf dist && npm run build && cp dist/index.html dist/200.html && surge dist"
@@ -28,7 +27,7 @@
     },
     "setupTestFrameworkScriptFile": "<rootDir>/src/test/setup.js"
   },
-  "author": "We're in <wereinhq.com>",
+  "author": "Pratik Galoria",
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^8.0.1",
@@ -54,6 +53,7 @@
     "webpack-dev-server": "2.9.1"
   },
   "dependencies": {
+    "@material-ui/core": "^1.1.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -62,6 +62,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "classnames": "^2.2.5",
     "compression-webpack-plugin": "^1.0.1",
     "connected-react-router": "4.2.3",
     "css-loader": "^0.28.7",
@@ -73,6 +74,7 @@
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "null-loader": "^0.1.1",
+    "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
