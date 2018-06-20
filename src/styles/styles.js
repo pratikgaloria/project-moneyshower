@@ -57,6 +57,29 @@ const styles = theme => ({
   colorWhite: {
     color: theme.palette.common.white,
   },
+  flexGrow: {
+    flexGrow: 1,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  actions: {
+    display: 'flex',
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+    marginLeft: 'auto',
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+  avatar: {
+    backgroundColor: theme.palette.primary.main,
+  },
 });
 
 export { themes, styles };

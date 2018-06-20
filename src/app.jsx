@@ -26,6 +26,7 @@ class App extends Component {
         <div className={classes.root}>
           <Layout />
           <main className={classes.main}>
+            <div className={classes.toolbar} />
             {this.props.children}
           </main>
         </div>
