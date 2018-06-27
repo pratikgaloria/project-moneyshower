@@ -2,6 +2,8 @@ import themes from './themes';
 
 const drawerWidth = 240;
 
+const colorLightGreen = '#CCDFB1';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -79,6 +81,21 @@ const styles = theme => ({
   },
   avatar: {
     backgroundColor: theme.palette.primary.main,
+  },
+  lightGreen: {
+    color: '#CCDFB1',
+  },
+  cardTitle: {
+    color: theme.palette.primary.contrastText,
+    fontWeight: 600,
+  },
+  cardContent: {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+  icon: {
+    fontSize: '0.9em',
+    paddingTop: theme.spacing.unit /2,
   },
 });
 

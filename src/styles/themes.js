@@ -56,6 +56,27 @@ const theme = createMuiTheme({
         textTransform: 'uppercase',
       },
     },
+    MuiCard: {
+      root: {
+        borderRadius: '5px',
+        borderColor: colorBackground,
+      },
+    },
+    MuiCardHeader: {
+      root: {
+        backgroundColor: '#A6C675',
+      },
+      action: {
+        marginTop: 'inherit',
+        marginRight: 'inherit',
+        alignSelf: 'inherit',
+      },
+    },
+    MuiCardContent: {
+      root: {
+        backgroundColor: '#A6C675',
+      },
+    },
   },
 });
 

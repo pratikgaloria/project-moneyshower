@@ -14,62 +14,19 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
 
-import Chart from 'chart.js';
+import { Chart } from 'react-google-charts';
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    let chartCanvas = this.refs.chart;
-    let theme = this.props.theme;
 
-    let myChart = new Chart(chartCanvas, {
-      type: 'line',
-      data: {
-        labels: ["6/19/2018","6/18/2018","6/15/2018","6/14/2018","6/13/2018","6/12/2018","6/11/2018","6/8/2018","6/7/2018","6/6/2018","6/5/2018","6/4/2018","6/1/2018","5/31/2018","5/30/2018","5/29/2018","5/25/2018","5/24/2018","5/23/2018","5/22/2018","5/21/2018","5/18/2018","5/17/2018","5/16/2018","5/15/2018","5/14/2018","5/11/2018","5/10/2018","5/9/2018","5/8/2018","5/7/2018","5/4/2018","5/3/2018","5/2/2018","5/1/2018","4/30/2018","4/27/2018","4/26/2018","4/25/2018","4/24/2018","4/23/2018","4/20/2018","4/19/2018","4/18/2018","4/17/2018","4/16/2018","4/13/2018","4/12/2018","4/11/2018","4/10/2018","4/9/2018","4/6/2018","4/5/2018","4/4/2018","4/3/2018","4/2/2018","3/29/2018","3/28/2018","3/27/2018","3/26/2018","3/23/2018","3/22/2018","3/21/2018","3/20/2018","3/19/2018","3/16/2018","3/15/2018","3/14/2018","3/13/2018","3/12/2018","3/9/2018","3/8/2018","3/7/2018","3/6/2018","3/5/2018","3/2/2018","3/1/2018","2/28/2018","2/27/2018","2/26/2018","2/23/2018","2/22/2018","2/21/2018","2/20/2018","2/16/2018","2/15/2018","2/14/2018","2/13/2018","2/12/2018","2/9/2018","2/8/2018","2/7/2018","2/6/2018","2/5/2018","2/2/2018","2/1/2018","1/31/2018","1/30/2018","1/29/2018","1/26/2018","1/25/2018","1/24/2018","1/23/2018","1/22/2018","1/19/2018","1/18/2018","1/17/2018","1/16/2018","1/12/2018","1/11/2018","1/10/2018","1/9/2018","1/8/2018","1/5/2018","1/4/2018","1/3/2018","1/2/2018"],
-        datasets: [
-          {
-            label: 'Lupin',
-            fill: true,
-            pointHoverRadius: 5,
-            pointRadius: 0,
-            pointHitRadius: 10,
-            data: [7228.04,7251.41,7255.76,7279.59,7205.26,7209.18,7168.48,7152.62,7152.83,7210.08,7166.75,7143.57,7083.93,6967.73,6976.37,6926.54,6960.92,6949.7,6953.63,6893.62,6905.53,6866.25,6901.63,6929.97,6888.54,6964.37,6952.56,6963.55,6893.21,6815.48,6821.87,6769.12,6643.48,6644.48,6681.96,6605.57,6656.35,6649.65,6513.94,6509.05,6648.8,6667.75,6774.89,6833.21,6816.37,6675.18,6628.34,6656.26,6583.44,6615.87,6472.34,6433.21,6594.84,6560.06,6458.83,6390.84,6581.13,6460.81,6529.84,6753.83,6508.09,6682.26,6853.45,6885.92,6864.88,7019.95,7030.97,7040.98,7046.51,7131.12,7101.18,6966.43,6929.39,6913.02,6881.28,6811.04,6750.54,6854.42,6900.35,6989.1,6896.6,6761.85,6759.26,6779.69,6770.66,6794.92,6675.03,6553.86,6523.85,6412.68,6306.1,6582.02,6665.98,6495.92,6760.29,6901.5,6949.99,6930.73,6988.32,7022.97,6916.3,6919.35,6963.46,6906.28,6834.33,6811.38,6810.28,6737.14,6758.54,6708.49,6662.66,6677.94,6676.63,6653.29,6584.58,6575.8,6511.34],
-            spanGaps: false,
-            borderColor: theme.palette.primary.main,
-            backgroundColor: '#eef0f2',
-          },
-        ],
-      },
-      options: {
-        tooltips: {
-          enabled: false,
-        },
-        legend: {
-          display: false,
-        },
-        scales: {
-          yAxes: [{
-            display: false,
-          }],
-          xAxes: [{
-            display: false,
-          }]
-        }
-      },
-    });
-
-    this.setState({ chart: myChart });
   }
   componentDidUpdate() {
-    let chart = this.state.chart;
 
-    /*
-    let data = chart.data;
-    data.datasets.forEach((dataset, i) => chart.data.datasets[i].data = dataset.data);
-    chart.data.labels = data.labels;
-    */
-
-    chart.update();
   }
 
   handleExpandClick = () => {
@@ -79,34 +36,78 @@ class Dashboard extends React.Component {
   render() {
     const { classes } = this.props;
 
+    const prices = [["2016-04-30",17897.46],["2016-03-31",17685.09],["2016-02-29",16516.5],["2016-01-31",16466.3],["2015-12-31",17425.03],["2015-11-30",17719.92],["2015-10-31",17663.54],["2015-09-30",16284.7],["2015-08-31",16528.03],["2015-07-31",17689.86],["2015-06-30",17619.51],["2015-05-31",18010.68],["2015-04-30",17840.52],["2015-03-31",17776.12],["2015-02-28",18132.7],["2015-01-31",17164.95],["2014-12-31",17823.07],["2014-11-30",17828.24],["2014-10-31",17390.52],["2014-09-30",17042.9],["2014-08-31",17098.45],["2014-07-31",16563.3],["2014-06-30",16826.6],["2014-05-31",16717.17],["2014-04-30",16580.84],["2014-03-31",16457.66],["2014-02-28",16321.71],["2014-01-31",15698.85],["2013-12-31",16576.66],["2013-11-30",16086.41],["2013-10-31",15545.75],["2013-09-30",15129.67],["2013-08-31",14810.31],["2013-07-31",15499.54],["2013-06-30",14909.6],["2013-05-31",15115.57],["2013-04-30",14839.8],["2013-03-31",14578.54],["2013-02-28",14054.49],["2013-01-31",13860.58],["2012-12-31",13104.14],["2012-11-30",13025.58],["2012-10-31",13096.46],["2012-09-30",13437.13],["2012-08-31",13090.84],["2012-07-31",13008.68],["2012-06-30",12880.09],["2012-05-31",12393.45],["2012-04-30",13213.63],["2012-03-31",13212.04],["2012-02-29",12952.07],["2012-01-31",12632.91],["2011-12-31",12217.56],["2011-11-30",12045.68],["2011-10-31",11955.01],["2011-09-30",10913.38],["2011-08-31",11613.53],["2011-07-31",12143.24],["2011-06-30",12414.34],["2011-05-31",12569.79],["2011-04-30",12810.54],["2011-03-31",12319.73],["2011-02-28",12226.34],["2011-01-31",11891.93],["2010-12-31",11577.51],["2010-11-30",11006.02],["2010-10-31",11118.49],["2010-09-30",10788.05],["2010-08-31",10014.72],["2010-07-31",10465.94],["2010-06-30",9774.02],["2010-05-31",10136.63],["2010-04-30",11008.61]];
+    const data = [['Time', 'Price', 'Volume']];
+    prices.forEach((p) => {
+      p.push(Math.floor((Math.random() * 10000) + 100));
+      data.push(p);
+    });
+
     return (
-      <Grid container className={classes.flexGrow} spacing={24}>
-        <Grid item xs={12} sm={4}>
+      <Grid container spacing={24}>
+        <Grid item xs={12} md={3}>
           <Card>
             <CardHeader
               avatar={
-                <Avatar aria-label="Recipe" className={classes.avatar}>
-                  <Icon>trending_up</Icon>
-                </Avatar>
+                <div>
+                  <Typography variant="title" className={classes.cardTitle}>AAPL</Typography>
+                  <Typography variant="body1" className={classes.lightGreen}>Today 3:25 PM</Typography>
+                </div>
               }
               action={
-                <IconButton>
-                  <Icon>more_horiz</Icon>
-                </IconButton>
+                <div style={{textAlign: 'right'}}>
+                  <Typography variant="title" className={classes.cardTitle}>
+                    <Icon className={classes.icon}>expand_less</Icon>
+                    524.21
+                  </Typography>
+                  <Typography variant="body1" className={classes.lightGreen}>+ 1.05 (1.89%)</Typography>
+                </div>
               }
-              title="Trending Stocks"
             />
-            <CardContent>
-              <canvas ref="chart" style={{ height: '5rem', width: '80vw' }} />
+            <CardContent className={classes.cardContent}>
+              <Chart
+                chartType="LineChart"
+                data={data}
+                options={{
+                  chartArea: {
+                    width: '100%',
+                    height: '100%',
+                  },
+                  backgroundColor: '#A6C675',
+                  curveType: 'function',
+                  legend: 'none',
+                  enableInteractivity: false,
+                  hAxis: {
+                    baselineColor: '#A6C675',
+                    gridlines: {
+                      count: 0,
+                    }
+                  },
+                  vAxis: {
+                    baselineColor: '#A6C675',
+                    gridlines: {
+                      count: 0,
+                    }
+                  },
+                  bar: {
+                    groupWidth: 4,
+                  },
+                  lineWidth: 3,
+                  series: {
+                    0: {
+                      color: 'white',
+                    },
+                    1: {
+                      type: 'bars',
+                      color: '#98b768',
+                    },
+                  },
+                }}
+                graph_id="LineChart"
+                width="100%"
+                height="80px"
+              />
             </CardContent>
-            <CardActions className={classes.actions} disableActionSpacing>
-              <IconButton aria-label="Add to favorites">
-                <Icon>favorite</Icon>
-              </IconButton>
-              <IconButton aria-label="Share">
-                <Icon>share</Icon>
-              </IconButton>
-            </CardActions>
           </Card>
         </Grid>
       </Grid>
