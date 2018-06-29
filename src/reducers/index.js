@@ -1,3 +1,11 @@
-export { default as app } from './app';
+import { combineReducers } from 'redux';
 
-export default {};
+import app from 'app';
+
+const reducer = combineReducers({
+  [app.moduleName]: app.reducer,
+});
+
+export default {
+  reducer,
+};

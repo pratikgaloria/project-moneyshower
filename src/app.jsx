@@ -23,10 +23,10 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <div className={classes.root}>
+        <div className={classes.app.root}>
           <Layout />
-          <main className={classes.main}>
-            <div className={classes.toolbar} />
+          <main className={classes.app.main}>
+            <div className={classes.common.toolbar} />
             {this.props.children}
           </main>
         </div>

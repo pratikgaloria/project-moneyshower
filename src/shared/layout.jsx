@@ -14,7 +14,7 @@ import Logo from './logo';
 import Menu from './menu';
 import Topbar from './topbar';
 
-class Layout extends React.Component {
+class Layout extends React.PureComponent {
   state = {
     mobileOpen: false,
   };

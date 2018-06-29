@@ -3,22 +3,27 @@ import themes from './themes';
 const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    height: '100%',
-    zIndex: 1,
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
+  app: {
+    root: {
+      flexGrow: 1,
+      height: '100%',
+      zIndex: 1,
+      overflow: 'hidden',
+      position: 'relative',
+      display: 'flex',
+      width: '100%',
+    },
+    main: {
+      flexGrow: 1,
+      backgroundColor: theme.palette.background.default,
+      padding: theme.spacing.unit * 3,
+    },
   },
-  main: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-  },
-  flex: {
-    flex: 1,
+  common: {
+    flex: {
+      flex: 1,
+    },
+    toolbar: theme.mixins.toolbar,
   },
   appBar: {
     position: 'absolute',
@@ -34,7 +39,6 @@ const styles = theme => ({
   marginLeft: {
     marginLeft: theme.spacing.unit,
   },
-  toolbar: theme.mixins.toolbar,
   drawerPaper: {
     background: 'linear-gradient(135deg, #BD9B3E, #D6C15B)',
     width: drawerWidth,

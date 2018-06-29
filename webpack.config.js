@@ -37,41 +37,57 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-      }, {
+      },
+      {
         test: /\.html$/,
         loader: 'html-loader',
-      }, {
+      },
+      {
         test: /\.css$/,
         use: stylesheetsLoaders,
-      }, {
+      },
+      {
         test: /\.scss$/,
-        use: [...stylesheetsLoaders, {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
+        use: [
+          ...stylesheetsLoaders,
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
           },
-        }],
-      }, {
+        ],
+      },
+      {
         test: /\.sass$/,
-        use: [...stylesheetsLoaders, {
-          loader: 'sass-loader',
-          options: {
-            indentedSyntax: 'sass',
-            sourceMap: true,
+        use: [
+          ...stylesheetsLoaders,
+          {
+            loader: 'sass-loader',
+            options: {
+              indentedSyntax: 'sass',
+              sourceMap: true,
+            },
           },
-        }],
-      }, {
+        ],
+      },
+      {
         test: /\.less$/,
-        use: [...stylesheetsLoaders, {
-          loader: 'less-loader',
-          options: {
-            sourceMap: true,
+        use: [
+          ...stylesheetsLoaders,
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true,
+            },
           },
-        }],
+        ],
       },
     ],
   },
   devServer: {
+    host: '0.0.0.0',
+    port: 8080,
     historyApiFallback: true,
     proxy: {
       '/api*': 'http://localhost:8181',
