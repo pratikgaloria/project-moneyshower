@@ -1,4 +1,11 @@
-/*
+/**
+ * Generic helpers
+ */
+export function has(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+/**
  * Constant creators
  */
 
@@ -45,3 +52,20 @@ export function createXhrActions(types) {
     failure: error => createAction(types.FAILURE, error),
   };
 }
+
+/**
+ * Reducer helpers
+ */
+export const createReducers = modules => modules.reduce((reducers, module) => {
+  if (!has(module, 'name')) {
+    throw new Error('Found a module with reducer that has no name');
+  }
+  if (!has(module, 'reducer')) {
+    throw new Error(`Found a module with no reducer: ${module}`);
+  }
+  if (has(Object.keys(reducers), module.name) === true) {
+    throw new Error(`A module with name ${module.name} has already been loaded`);
+  }
+
+  return { ...reducers, [module.name]: module.reducer };
+}, {});

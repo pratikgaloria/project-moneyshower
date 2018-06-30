@@ -2,23 +2,33 @@
  * Module: App
  */
 import { createReducer } from 'redux-create-reducer';
-import { createLifecycleConstants, createLifecycleActions } from 'utils';
+import {
+  createConstant,
+  createLifecycleConstants,
+  createAction,
+  createLifecycleActions,
+} from 'utils';
+import App from './app';
 
-const moduleName = 'app';
+const name = 'app';
 
 // Constants
 const APP = {
-  LIFECYCLE: createLifecycleConstants(moduleName),
+  LIFECYCLE: createLifecycleConstants(name),
+  DRAWER_TOGGLE: createConstant(name, 'DRAWER', 'TOGGLE'),
 };
 const constants = { APP };
 
 // Actions
-const actions = createLifecycleActions(APP.LIFECYCLE);
+const actions = {
+  lifecycle: createLifecycleActions(APP.LIFECYCLE),
+  drawerToggle: () => createAction(APP.DRAWER_TOGGLE),
+};
 
 // Reducer
 const initialState = {
   loaded: false,
-  mobileOpen: false,
+  drawerOpen: false,
 };
 
 const reducer = createReducer(initialState, {
@@ -31,6 +41,11 @@ const reducer = createReducer(initialState, {
     ...state,
     loaded: false,
   }),
+
+  [APP.DRAWER_TOGGLE]: state => ({
+    ...state,
+    drawerOpen: !state.drawerOpen,
+  }),
 });
 
 // Selectors
@@ -38,11 +53,13 @@ const selectors = {
   base: state => state.view.app,
 };
 
+export { App };
+
 export default {
   actions,
   constants,
   initialState,
-  moduleName,
+  name,
   reducer,
   selectors,
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'styles/styles';
 
@@ -25,6 +26,15 @@ class Menu extends React.PureComponent {
             <ListItemText
               disableTypography
               primary={<Typography variant="subheading" className={classes.colorWhite}>Dashboard</Typography>}
+            />
+          </ListItem>
+          <ListItem button component={Link} to="/watchlist">
+            <ListItemIcon className={classes.colorWhite}>
+              <Icon>visibility</Icon>
+            </ListItemIcon>
+            <ListItemText
+              disableTypography
+              primary={<Typography variant="subheading" className={classes.colorWhite}>Watchlist</Typography>}
             />
           </ListItem>
           <ListItem button>

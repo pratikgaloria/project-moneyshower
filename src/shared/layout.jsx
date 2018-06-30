@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'styles/styles';
+import { common } from 'styles/styles';
 
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
@@ -14,17 +14,43 @@ import Logo from './logo';
 import Menu from './menu';
 import Topbar from './topbar';
 
-class Layout extends React.PureComponent {
-  state = {
-    mobileOpen: false,
-  };
+const drawerWidth = 240;
 
-  handleDrawerToggle = () => {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
-  };
+const styles = theme => ({
+  appBar: {
+    position: 'absolute',
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+  },
+  appBarBackground: {
+    color: theme.palette.primary.dark,
+    backgroundColor: theme.palette.background.default,
+  },
+  drawerPaper: {
+    background: 'linear-gradient(135deg, #BD9B3E, #D6C15B)',
+    width: drawerWidth,
+    [theme.breakpoints.up('md')]: {
+      position: 'relative',
+    },
+  },
+  ...common(theme),
+});
+
+type Props = {
+  drawerOpen: false,
+  drawerToggle: () => void,
+  classes: {},
+};
+
+class Layout extends React.PureComponent {
+  props: Props;
 
   render() {
-    const { classes, theme } = this.props;
+    const {
+      classes, drawerOpen, drawerToggle,
+    } = this.props;
 
     return (
       <div>
@@ -40,12 +66,12 @@ class Layout extends React.PureComponent {
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
-                onClick={this.handleDrawerToggle}
+                onClick={drawerToggle}
               >
                 <Icon>menu</Icon>
               </IconButton>
             </Hidden>
-            <Typography variant="title" color="primary" noWrap className={classes.flex}>
+            <Typography variant="title" color="primary" noWrap className={classes.flexGrow}>
               Dashboard
             </Typography>
             <Topbar />
@@ -54,9 +80,8 @@ class Layout extends React.PureComponent {
         <Hidden mdUp>
           <Drawer
             variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-            open={this.state.mobileOpen}
-            onClose={this.handleDrawerToggle}
+            open={drawerOpen}
+            onClose={drawerToggle}
             classes={{
               paper: classes.drawerPaper,
             }}
@@ -85,4 +110,4 @@ class Layout extends React.PureComponent {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Layout);
+export default withStyles(styles)(Layout);

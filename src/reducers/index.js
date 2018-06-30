@@ -1,11 +1,16 @@
 import { combineReducers } from 'redux';
 
+import { createReducers } from 'utils';
 import app from 'app';
 
-const reducer = combineReducers({
-  [app.moduleName]: app.reducer,
+const views = [
+  app,
+];
+
+const viewReducers = combineReducers(createReducers(views));
+
+const rootReducer = combineReducers({
+  view: viewReducers,
 });
 
-export default {
-  reducer,
-};
+export default rootReducer;

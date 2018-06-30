@@ -1,68 +1,24 @@
 import themes from './themes';
 
-const drawerWidth = 240;
-
-const styles = theme => ({
-  app: {
-    root: {
-      flexGrow: 1,
-      height: '100%',
-      zIndex: 1,
-      overflow: 'hidden',
-      position: 'relative',
-      display: 'flex',
-      width: '100%',
-    },
-    main: {
-      flexGrow: 1,
-      backgroundColor: theme.palette.background.default,
-      padding: theme.spacing.unit * 3,
-    },
+const common = theme => ({
+  flex: {
+    display: 'flex',
   },
-  common: {
-    flex: {
-      flex: 1,
-    },
-    toolbar: theme.mixins.toolbar,
-  },
-  appBar: {
-    position: 'absolute',
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('md')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
-  },
-  appBarBackground: {
-    color: theme.palette.primary.dark,
-    backgroundColor: theme.palette.background.default,
-  },
-  marginLeft: {
-    marginLeft: theme.spacing.unit,
-  },
-  drawerPaper: {
-    background: 'linear-gradient(135deg, #BD9B3E, #D6C15B)',
-    width: drawerWidth,
-    [theme.breakpoints.up('md')]: {
-      position: 'relative',
-    },
-  },
-  logo: {
-    color: '#fff',
-    padding: theme.spacing.unit * 2,
-  },
-  logoIcon: {
-    fontSize: '32px',
-    fontWeight: 700,
-  },
-  logoText: {
-    textTransform: 'uppercase',
-    fontWeight: 700,
-  },
-  colorWhite: {
-    color: theme.palette.common.white,
+  flex1: {
+    flex: 1,
   },
   flexGrow: {
     flexGrow: 1,
+  },
+  toolbar: theme.mixins.toolbar,
+});
+
+const styles = theme => ({
+  marginLeft: {
+    marginLeft: theme.spacing.unit,
+  },
+  colorWhite: {
+    color: theme.palette.common.white,
   },
   media: {
     height: 0,
@@ -86,4 +42,4 @@ const styles = theme => ({
   },
 });
 
-export { themes, styles };
+export { themes, styles, common };
