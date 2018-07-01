@@ -1,6 +1,9 @@
 import themes from './themes';
 
 const common = theme => ({
+  colorWhite: {
+    color: theme.palette.common.white,
+  },
   flex: {
     display: 'flex',
   },
@@ -20,25 +23,11 @@ const styles = theme => ({
   colorWhite: {
     color: theme.palette.common.white,
   },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+  tabsRoot: {
+    backgroundColor: '#E9EFE8',
   },
-  actions: {
-    display: 'flex',
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-    marginLeft: 'auto',
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: theme.palette.primary.main,
+  tabsIndicator: {
+    height: '2px',
   },
 });
 

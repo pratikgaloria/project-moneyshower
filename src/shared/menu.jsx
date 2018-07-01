@@ -19,7 +19,7 @@ class Menu extends React.PureComponent {
       <div>
         <Divider />
         <List>
-          <ListItem button>
+          <ListItem button component={Link} to="/">
             <ListItemIcon className={classes.colorWhite}>
               <Icon>dashboard</Icon>
             </ListItemIcon>

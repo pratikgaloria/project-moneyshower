@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -22,13 +23,16 @@ const styles = theme => ({
   main: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing.unit * 3,
+    },
   },
   ...common(theme),
 });
 
 type Props = {
   mount: () => void,
+  title: '',
   drawerOpen: false,
   drawerToggle: () => void,
   classes: {},
@@ -56,13 +60,15 @@ class App extends React.Component {
   props: Props;
 
   render() {
-    const { classes, drawerOpen, drawerToggle } = this.props;
+    const {
+      classes, title, drawerOpen, drawerToggle,
+    } = this.props;
 
     return (
       <MuiThemeProvider theme={themes}>
         <CssBaseline />
         <div className={classes.root}>
-          <Layout drawerOpen={drawerOpen} drawerToggle={drawerToggle} />
+          <Layout title={title} drawerOpen={drawerOpen} drawerToggle={drawerToggle} />
           <main className={classes.main}>
             <div className={classes.toolbar} />
             {this.props.children}
@@ -75,4 +81,4 @@ class App extends React.Component {
 
 const AppWithStyles = withStyles(styles)(App);
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppWithStyles);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppWithStyles));

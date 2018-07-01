@@ -5,11 +5,11 @@ import IconButton from '@material-ui/core/IconButton';
 
 const Topbar = () => (
   <div>
-    <IconButton color="primary">
-      <Icon>notifications</Icon>
+    <IconButton>
+      <Icon style={{color: '#FFF'}}>notifications</Icon>
     </IconButton>
-    <IconButton color="primary">
-      <Icon>account_circle</Icon>
+    <IconButton>
+      <Icon style={{color: '#FFF'}}>account_circle</Icon>
     </IconButton>
   </div>
 );

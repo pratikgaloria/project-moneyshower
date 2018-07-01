@@ -1,7 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import classnames from 'classnames';
-import { styles } from 'styles/styles';
+import { connect } from 'react-redux';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -15,12 +13,28 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
 
-class Dashboard extends React.Component {
-  render() {
-    const { classes } = this.props;
+import app from 'app';
 
-    return <div>This is dashboard</div>;
+type Props = {
+  titleSet: () => void,
+};
+
+const mapDispatchToProps = dispatch => ({
+  titleSet: () => {
+    dispatch(app.actions.titleSet('dashboard'));
+  },
+});
+
+class Dashboard extends React.Component {
+  componentDidMount() {
+    this.props.titleSet();
+  }
+
+  props: Props;
+
+  render() {
+    return <div />;
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Dashboard);
+export default connect(null, mapDispatchToProps)(Dashboard);

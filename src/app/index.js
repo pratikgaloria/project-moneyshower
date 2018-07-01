@@ -16,6 +16,7 @@ const name = 'app';
 const APP = {
   LIFECYCLE: createLifecycleConstants(name),
   DRAWER_TOGGLE: createConstant(name, 'DRAWER', 'TOGGLE'),
+  TITLE_SET: createConstant(name, 'TITLE', 'SET'),
 };
 const constants = { APP };
 
@@ -23,12 +24,14 @@ const constants = { APP };
 const actions = {
   lifecycle: createLifecycleActions(APP.LIFECYCLE),
   drawerToggle: () => createAction(APP.DRAWER_TOGGLE),
+  titleSet: title => createAction(APP.TITLE_SET, { title }),
 };
 
 // Reducer
 const initialState = {
   loaded: false,
   drawerOpen: false,
+  title: '',
 };
 
 const reducer = createReducer(initialState, {
@@ -45,6 +48,11 @@ const reducer = createReducer(initialState, {
   [APP.DRAWER_TOGGLE]: state => ({
     ...state,
     drawerOpen: !state.drawerOpen,
+  }),
+
+  [APP.TITLE_SET]: (state, action) => ({
+    ...state,
+    title: action.payload.title,
   }),
 });
 
