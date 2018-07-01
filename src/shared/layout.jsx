@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { common } from 'styles/styles';
 
@@ -27,9 +28,19 @@ const styles = theme => ({
   appBarBackground: {
     color: theme.palette.primary.dark,
     backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.down('sm')]: {
+      background: 'linear-gradient(135deg, #BD9B3E, #D6C15B)',
+      color: theme.palette.secondary.contrastText,
+    },
+  },
+  titleColor: {
+    color: theme.palette.primary.main,
+    [theme.breakpoints.down('sm')]: {
+      color: theme.palette.secondary.contrastText,
+    },
   },
   drawerPaper: {
-    background: 'linear-gradient(135deg, #BD9B3E, #D6C15B)',
+    background: 'linear-gradient(0deg, #BD9B3E, #D6C15B)',
     width: drawerWidth,
     [theme.breakpoints.up('md')]: {
       position: 'relative',
@@ -39,6 +50,7 @@ const styles = theme => ({
 });
 
 type Props = {
+  title: 'Dashboard',
   drawerOpen: false,
   drawerToggle: () => void,
   classes: {},
@@ -49,7 +61,7 @@ class Layout extends React.PureComponent {
 
   render() {
     const {
-      classes, drawerOpen, drawerToggle,
+      title, classes, drawerOpen, drawerToggle,
     } = this.props;
 
     return (
@@ -71,8 +83,8 @@ class Layout extends React.PureComponent {
                 <Icon>menu</Icon>
               </IconButton>
             </Hidden>
-            <Typography variant="title" color="primary" noWrap className={classes.flexGrow}>
-              Dashboard
+            <Typography variant="title" noWrap className={classnames(classes.titleColor, classes.flexGrow)}>
+              {title}
             </Typography>
             <Topbar />
           </Toolbar>

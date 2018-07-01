@@ -1,6 +1,9 @@
 import themes from './themes';
 
 const common = theme => ({
+  colorWhite: {
+    color: theme.palette.common.white,
+  },
   flex: {
     display: 'flex',
   },

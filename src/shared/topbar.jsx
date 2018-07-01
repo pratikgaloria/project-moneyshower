@@ -5,10 +5,10 @@ import IconButton from '@material-ui/core/IconButton';
 
 const Topbar = () => (
   <div>
-    <IconButton color="primary">
+    <IconButton>
       <Icon>notifications</Icon>
     </IconButton>
-    <IconButton color="primary">
+    <IconButton>
       <Icon>account_circle</Icon>
     </IconButton>
   </div>
