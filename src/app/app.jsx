@@ -1,6 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { MuiThemeProvider, withStyles } from '@material-ui/core/styles';
