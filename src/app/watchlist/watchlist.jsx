@@ -36,7 +36,6 @@ function TabContainer({ children }) {
 
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
-  dir: PropTypes.string.isRequired,
 };
 
 class WatchList extends React.Component {
@@ -87,7 +86,6 @@ class WatchList extends React.Component {
                       <Typography classes={{root: classes.changes}}>32.1 (1.04%)</Typography>
                     </div>
                 </ExpansionPanelSummary>
-                <ExpansionPanelDetails />
               </ExpansionPanel>
             </TabContainer>
           }{
