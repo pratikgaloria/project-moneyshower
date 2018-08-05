@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const { Client } = require('pg');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -8,21 +8,10 @@ const port = process.env.PORT ? process.env.PORT : 8181;
 const dist = path.join(__dirname, 'dist');
 
 app.use(express.static(dist));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/db', (request, response) => {
-  const connectionString = 'postgres://postgres:postgres@localhost:5432/showr';
-
-  const client = new Client({
-    connectionString,
-  });
-
-  client.connect();
-
-  client.query('SELECT * FROM segment', (err, res) => {
-    response.json(res.rows);
-    client.end();
-  });
-});
+require('./db/routes')(app);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(dist, 'index.html'));
