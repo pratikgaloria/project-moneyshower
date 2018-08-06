@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^1.1.0",
+    "axios": "^0.18.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -88,6 +89,7 @@
     "react-swipeable-views": "^0.12.14",
     "redux": "^3.7.2",
     "redux-create-reducer": "^1.1.2",
+    "redux-saga": "^0.16.0",
     "sequelize": "^4.38.0",
     "style-loader": "^0.18.2",
     "webpack": "3.6.0"

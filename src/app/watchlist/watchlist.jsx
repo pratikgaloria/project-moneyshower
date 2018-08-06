@@ -15,12 +15,17 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 
 import app from 'app';
+import self from './';
 
 type Props = {
+  mount: () => void,
   titleSet: () => void,
 };
 
 const mapDispatchToProps = dispatch => ({
+  mount: () => {
+    dispatch(self.actions.lifecycle.mount());
+  },
   titleSet: () => {
     dispatch(app.actions.titleSet('Watchlist'));
   },
@@ -44,6 +49,7 @@ class WatchList extends React.Component {
   };
 
   componentDidMount() {
+    this.props.mount();
     this.props.titleSet();
   }
 
