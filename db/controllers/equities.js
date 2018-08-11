@@ -1,6 +1,7 @@
 const Equity = require('../models').Equity;
 const Segment = require('../models').Segment;
 const Watchlist = require('../models').Watchlist;
+const Quote = require('../models').Quote;
 
 module.exports = {
   create(req, res) {
@@ -15,7 +16,13 @@ module.exports = {
   },
   list(req, res) {
     return Equity
-      .all()
+      .findAll({
+        include: [{
+          model: Quote,
+          as: 'quotes',
+          attributes: ['timestamp', 'ltp', 'open', 'high', 'low', 'close'],
+        }],
+      })
       .then(equities => res.status(200).send(equities))
       .catch(error => res.status(400).send(error));
   },

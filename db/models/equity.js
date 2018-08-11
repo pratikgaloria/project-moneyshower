@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'segments',
       onDelete: 'CASCADE',
     });
+    Equity.hasOne(models.Quote, {
+      foreignKey: 'equityId',
+      as: 'quotes',
+    });
     Equity.belongsToMany(models.Watchlist, {
       through: 'WatchlistEquity',
       as: 'watchlists',

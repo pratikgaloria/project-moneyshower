@@ -1,5 +1,6 @@
 const segmentsController = require('../controllers').segments;
 const equitiesController = require('../controllers').equities;
+const quotesController = require('../controllers').quotes;
 const watchlistsController = require('../controllers').watchlists;
 
 module.exports = (app) => {
@@ -14,6 +15,10 @@ module.exports = (app) => {
 
   // Equities
   app.get('/api/equities', equitiesController.list);
+
+  // Quotes
+  app.get('/api/quotes', quotesController.list);
+  app.get('/api/quotes/:quoteId', quotesController.retrieve);
 
   // watchlists
   app.get('/api/watchlists', watchlistsController.list);
