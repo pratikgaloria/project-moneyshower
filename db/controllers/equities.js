@@ -16,13 +16,7 @@ module.exports = {
   },
   list(req, res) {
     return Equity
-      .findAll({
-        include: [{
-          model: Quote,
-          as: 'quotes',
-          attributes: ['timestamp', 'ltp', 'open', 'high', 'low', 'close'],
-        }],
-      })
+      .all()
       .then(equities => res.status(200).send(equities))
       .catch(error => res.status(400).send(error));
   },

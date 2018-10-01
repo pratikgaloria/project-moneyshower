@@ -17,8 +17,9 @@ module.exports = (app) => {
   app.get('/api/equities', equitiesController.list);
 
   // Quotes
-  app.get('/api/quotes', quotesController.list);
   app.get('/api/quotes/:quoteId', quotesController.retrieve);
+  app.get('/api/quotes', quotesController.list);
+  app.put('/api/quotes/:quoteId', quotesController.update);
 
   // watchlists
   app.get('/api/watchlists', watchlistsController.list);
