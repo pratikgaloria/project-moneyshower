@@ -10,6 +10,9 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "postinstall": "npm run build",
+    "forever:list": "forever list",
+    "forever:start": "forever start ticker.js",
+    "forever:stop": "forever stopall",
     "lint": "eslint .",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.production.js --progress --profile --colors",
     "surge": "rm -rf dist && npm run build && cp dist/index.html dist/200.html && surge dist"
@@ -43,6 +46,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "forever": "^0.15.3",
     "identity-obj-proxy": "^3.0.0",
     "imports-loader": "^0.7.1",
     "jest-cli": "^21.2.1",
