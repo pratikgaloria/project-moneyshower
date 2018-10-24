@@ -6,6 +6,7 @@ module.exports = {
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date(),
+      segmentId: 1,
     }]),
   down: (queryInterface, Sequelize) => queryInterface.bulkDelete('Equities', null, {}),
 };
