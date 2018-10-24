@@ -24,7 +24,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   MetadataDaily.associate = (models) => {
-    // associations can be defined here
+    MetadataDaily.belongsTo(models.Equity, {
+      foreignKey: 'equityId',
+      as: 'equities',
+      onDelete: 'CASCADE',
+    });
   };
 
   return MetadataDaily;

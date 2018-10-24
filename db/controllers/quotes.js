@@ -1,3 +1,4 @@
+
 const Quote = require('../models').Quote;
 const Equity = require('../models').Equity;
 
@@ -16,11 +17,12 @@ module.exports = {
   },
   retrieve(req, res) {
     return Quote
-      .findById(req.params.quoteId, {
+      .findOne({
         include: [{
           model: Equity,
           as: 'equities',
-          attributes: ['id', 'symbol'],
+          attributes: ['symbol'],
+          where: { id: req.params.equityId },
         }],
       })
       .then((quote) => {
@@ -37,11 +39,12 @@ module.exports = {
     const timestamp = new Date();
 
     return Quote
-      .findById(req.params.quoteId, {
+      .findOne({
         include: [{
           model: Equity,
           as: 'equities',
-          attributes: ['id', 'symbol'],
+          attributes: ['symbol'],
+          where: { id: req.params.equityId },
         }],
       })
       .then((quote) => {
